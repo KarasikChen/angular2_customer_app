@@ -7,17 +7,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var AppComponent = (function () {
-    function AppComponent() {
-        this.title = 'Customer List';
+var mock_customers_1 = require("./mock-customers");
+var CustomerService = (function () {
+    function CustomerService() {
     }
-    return AppComponent;
+    CustomerService.prototype.getCustomers = function () {
+        return Promise.resolve(mock_customers_1.CUSTOMERS);
+    };
+    return CustomerService;
 }());
-AppComponent = __decorate([
-    core_1.Component({
-        selector: 'app-root',
-        templateUrl: './app.component.html',
-    })
-], AppComponent);
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+CustomerService = __decorate([
+    core_1.Injectable()
+], CustomerService);
+exports.CustomerService = CustomerService;
+//# sourceMappingURL=customer.service.js.map

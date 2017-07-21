@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Customer } from './customer';
 
 @Component({
   selector: 'customer-detail',
@@ -13,6 +14,9 @@ import { Component } from '@angular/core';
     </div>
     `
 })
+
+
+
 export class CustomerDetailComponent {
-  customer: Customer;
+  @Input() customer: Customer;
 }

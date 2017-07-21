@@ -11,6 +11,9 @@ var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
 var app_component_1 = require("./app.component");
+var customer_detail_component_1 = require("./customer-detail.component");
+var customers_component_1 = require("./customers.component");
+var customer_service_1 = require("./customer.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -19,14 +22,16 @@ var AppModule = (function () {
 AppModule = __decorate([
     core_1.NgModule({
         declarations: [
-            app_component_1.AppComponent
+            app_component_1.AppComponent,
+            customer_detail_component_1.CustomerDetailComponent,
+            customers_component_1.CustomersComponent,
         ],
         imports: [
             platform_browser_1.BrowserModule,
             forms_1.FormsModule,
             http_1.HttpModule
         ],
-        providers: [],
+        providers: [customer_service_1.CustomerService],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);
