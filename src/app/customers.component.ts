@@ -4,6 +4,7 @@ import {CustomerDetailComponent} from './customer-detail.component';
 import { CUSTOMERS } from './mock-customers';
 import {CustomerService} from './customer.service';
 import {OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -19,7 +20,9 @@ export class CustomersComponent implements OnInit {
     onSelect(customer: Customer): void {
         this.selectedCustomer = customer;
     }
-    constructor(private customerService: CustomerService) {}
+    constructor(private customerService: CustomerService,
+                private router: Router
+              ) {}
 
     getCustomers(): void {
       this.customerService.getCustomers()
@@ -29,4 +32,7 @@ export class CustomersComponent implements OnInit {
     ngOnInit() : void {
         this.getCustomers();
       }
+    gotoDetail(): void {
+      this.router.navigate(['/detail', this.selectedCustomer.id]);
+    }
     }

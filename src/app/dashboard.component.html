@@ -1,6 +1,6 @@
 <h2>Here is my Dashboard</h2>
 
-<div *ngFor="let customer of customers">
+<a *ngFor="let customer of customers"  [routerLink]="['/detail', customer.id]" class="col-1-4">
   <p>ID: {{customer.id}}</p>
   <p>Name: {{customer.name}}</p>
-</div>
+</a>

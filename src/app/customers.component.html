@@ -7,12 +7,18 @@
         <span class="badge">{{customer.id}}</span> {{customer.name}}
       </li>
     </ul>
-    <div *ngIf="selectedCustomer">
+    <!-- <div *ngIf="selectedCustomer">
       <h2>{{selectedCustomer.name}} details!</h2>
       <div><label>id: </label>{{selectedCustomer.id}}</div>
       <div>
         <label>name: </label>
         <input [(ngModel)]="selectedCustomer.name" placeholder="name"/>
       </div>
-    </div>
-<customer-detail [customer]="selectedCustomer"></customer-detail>
+    </div> -->
+<!-- <customer-detail [customer]="selectedCustomer"></customer-detail> -->
+<div *ngIf="selectedCustomer">
+  <h2>
+    {{selectedCustomer.name | uppercase}} is my hero
+  </h2>
+  <button (click)="gotoDetail()">View Details</button>
+</div>

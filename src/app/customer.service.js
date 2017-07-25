@@ -14,6 +14,10 @@ var CustomerService = (function () {
     CustomerService.prototype.getCustomers = function () {
         return Promise.resolve(mock_customers_1.CUSTOMERS);
     };
+    CustomerService.prototype.getCustomer = function (id) {
+        return this.getCustomers()
+            .then(function (customers) { return customers.find(function (customer) { return customer.id === id; }); });
+    };
     return CustomerService;
 }());
 CustomerService = __decorate([

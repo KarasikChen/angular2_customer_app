@@ -10,10 +10,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var common_1 = require("@angular/common");
+var customer_service_1 = require("./customer.service");
 var customer_1 = require("./customer");
+require("rxjs/add/operator/switchMap");
 var CustomerDetailComponent = (function () {
-    function CustomerDetailComponent() {
+    function CustomerDetailComponent(customerService, route, location) {
+        this.customerService = customerService;
+        this.route = route;
+        this.location = location;
     }
+    CustomerDetailComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.route.paramMap
+            .switchMap(function (params) {
+            return _this.customerService.getCustomer(+params.get('id'));
+        })
+            .subscribe(function (customer) { return _this.customer = customer; });
+    };
+    CustomerDetailComponent.prototype.goBack = function () {
+        this.location.back();
+    };
     return CustomerDetailComponent;
 }());
 __decorate([
@@ -23,8 +41,11 @@ __decorate([
 CustomerDetailComponent = __decorate([
     core_1.Component({
         selector: 'customer-detail',
-        template: "\n  <div *ngIf=\"hero\">\n      <h2>{{hero.name}} details!</h2>\n      <div><label>id: </label>{{hero.id}}</div>\n      <div>\n        <label>name: </label>\n        <input [(ngModel)]=\"hero.name\" placeholder=\"name\"/>\n      </div>\n    </div>\n    "
-    })
+        templateUrl: './customer-detail.component.html',
+    }),
+    __metadata("design:paramtypes", [customer_service_1.CustomerService,
+        router_1.ActivatedRoute,
+        common_1.Location])
 ], CustomerDetailComponent);
 exports.CustomerDetailComponent = CustomerDetailComponent;
 //# sourceMappingURL=customer-detail.component.js.map

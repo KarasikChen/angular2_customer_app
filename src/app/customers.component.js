@@ -11,9 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var customer_service_1 = require("./customer.service");
+var router_1 = require("@angular/router");
 var CustomersComponent = (function () {
-    function CustomersComponent(customerService) {
+    function CustomersComponent(customerService, router) {
         this.customerService = customerService;
+        this.router = router;
     }
     CustomersComponent.prototype.onSelect = function (customer) {
         this.selectedCustomer = customer;
@@ -26,6 +28,9 @@ var CustomersComponent = (function () {
     CustomersComponent.prototype.ngOnInit = function () {
         this.getCustomers();
     };
+    CustomersComponent.prototype.gotoDetail = function () {
+        this.router.navigate(['/detail', this.selectedCustomer.id]);
+    };
     return CustomersComponent;
 }());
 CustomersComponent = __decorate([
@@ -34,7 +39,8 @@ CustomersComponent = __decorate([
         templateUrl: './customers.component.html',
         styleUrls: ['./app.component.css'],
     }),
-    __metadata("design:paramtypes", [customer_service_1.CustomerService])
+    __metadata("design:paramtypes", [customer_service_1.CustomerService,
+        router_1.Router])
 ], CustomersComponent);
 exports.CustomersComponent = CustomersComponent;
 //# sourceMappingURL=customers.component.js.map
