@@ -10,9 +10,9 @@ import {OnInit} from '@angular/core';
     selector: 'my-customers',
     templateUrl: './customers.component.html',
     styleUrls: ['./app.component.css'],
-  
 
 })
+
 export class CustomersComponent implements OnInit {
     customers: Customer[];
     selectedCustomer: Customer;

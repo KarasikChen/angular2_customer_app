@@ -10,10 +10,12 @@ var platform_browser_1 = require("@angular/platform-browser");
 var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
+var router_1 = require("@angular/router");
 var app_component_1 = require("./app.component");
 var customer_detail_component_1 = require("./customer-detail.component");
 var customers_component_1 = require("./customers.component");
 var customer_service_1 = require("./customer.service");
+var dashboard_component_1 = require("./dashboard.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -25,11 +27,27 @@ AppModule = __decorate([
             app_component_1.AppComponent,
             customer_detail_component_1.CustomerDetailComponent,
             customers_component_1.CustomersComponent,
+            dashboard_component_1.DashboardComponent,
         ],
         imports: [
             platform_browser_1.BrowserModule,
             forms_1.FormsModule,
-            http_1.HttpModule
+            http_1.HttpModule,
+            router_1.RouterModule.forRoot([
+                {
+                    path: 'customers',
+                    component: customers_component_1.CustomersComponent
+                },
+                {
+                    path: 'dashboard',
+                    component: dashboard_component_1.DashboardComponent
+                },
+                {
+                    pathMatch: 'full',
+                    path: '',
+                    redirectTo: '/dashboard',
+                }
+            ])
         ],
         providers: [customer_service_1.CustomerService],
         bootstrap: [app_component_1.AppComponent]
