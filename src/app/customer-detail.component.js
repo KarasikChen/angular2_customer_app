@@ -32,6 +32,11 @@ var CustomerDetailComponent = (function () {
     CustomerDetailComponent.prototype.goBack = function () {
         this.location.back();
     };
+    CustomerDetailComponent.prototype.save = function () {
+        var _this = this;
+        this.customerService.update(this.customer)
+            .then(function () { return _this.goBack(); });
+    };
     return CustomerDetailComponent;
 }());
 __decorate([

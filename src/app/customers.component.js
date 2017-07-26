@@ -31,6 +31,18 @@ var CustomersComponent = (function () {
     CustomersComponent.prototype.gotoDetail = function () {
         this.router.navigate(['/detail', this.selectedCustomer.id]);
     };
+    CustomersComponent.prototype.add = function (name) {
+        var _this = this;
+        name = name.trim();
+        if (!name) {
+            return;
+        }
+        this.customerService.create(name)
+            .then(function (customer) {
+            _this.customers.push(customer);
+            _this.selectedCustomer = null;
+        });
+    };
     return CustomersComponent;
 }());
 CustomersComponent = __decorate([

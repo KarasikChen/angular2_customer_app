@@ -35,4 +35,16 @@ export class CustomersComponent implements OnInit {
     gotoDetail(): void {
       this.router.navigate(['/detail', this.selectedCustomer.id]);
     }
+
+    add(name: string): void { // '   FOO     ' => 'FOO'
+      name = name.trim();
+      if (!name) {return; }
+      this.customerService.create(name)
+        .then(customer => {
+          this.customers.push(customer);
+          this.selectedCustomer = null;
+        })
+    }
+
+  
     }

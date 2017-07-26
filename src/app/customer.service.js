@@ -16,6 +16,7 @@ var CustomerService = (function () {
     function CustomerService(http) {
         this.http = http;
         this.customersUrl = 'api/customers';
+        this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
     }
     CustomerService.prototype.getCustomers = function () {
         return this.http.get(this.customersUrl)
@@ -24,12 +25,30 @@ var CustomerService = (function () {
             .catch(this.handleError);
     };
     CustomerService.prototype.handleError = function (error) {
-        console.error('An error occurred', error);
+        console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
     };
     CustomerService.prototype.getCustomer = function (id) {
-        return this.getCustomers()
-            .then(function (customers) { return customers.find(function (customer) { return customer.id === id; }); });
+        var url = this.customersUrl + "/" + id;
+        return this.http.get(url)
+            .toPromise()
+            .then(function (response) { return response.json().data; })
+            .catch(this.handleError);
+    };
+    CustomerService.prototype.update = function (customer) {
+        var url = this.customersUrl + "/" + customer.id;
+        return this.http
+            .put(url, JSON.stringify(customer), { headers: this.headers })
+            .toPromise()
+            .then(function () { return customer; })
+            .catch(this.handleError);
+    };
+    CustomerService.prototype.create = function (name) {
+        return this.http
+            .post(this.customersUrl, JSON.stringify({ name: name }), { headers: this.headers })
+            .toPromise()
+            .then(function (res) { return res.json().data; })
+            .catch(this.handleError);
     };
     return CustomerService;
 }());
