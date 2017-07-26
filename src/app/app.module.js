@@ -18,6 +18,7 @@ var customers_component_1 = require("./customers.component");
 var customer_service_1 = require("./customer.service");
 var dashboard_component_1 = require("./dashboard.component");
 var app_routing_module_1 = require("./app-routing.module");
+var customer_search_component_1 = require("./customer-search.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -30,6 +31,7 @@ AppModule = __decorate([
             customer_detail_component_1.CustomerDetailComponent,
             customers_component_1.CustomersComponent,
             dashboard_component_1.DashboardComponent,
+            customer_search_component_1.CustomerSearchComponent
         ],
         imports: [
             platform_browser_1.BrowserModule,

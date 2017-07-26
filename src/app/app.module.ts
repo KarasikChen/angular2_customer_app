@@ -12,6 +12,7 @@ import {CustomerService} from './customer.service';
 import {DashboardComponent} from './dashboard.component';
 
 import { AppRoutingModule } from './app-routing.module';
+import {CustomerSearchComponent} from './customer-search.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { AppRoutingModule } from './app-routing.module';
     CustomerDetailComponent,
     CustomersComponent,
     DashboardComponent,
+    CustomerSearchComponent
   ],
   imports: [
     BrowserModule,

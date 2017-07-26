@@ -1,5 +1,15 @@
 <h2>Here is my Dashboard</h2>
 
+<h3>Top Heroes</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let customer of customers" [routerLink]="['/detail', customer.id]"
+  class="col=1=4">
+  <div class="module customer">
+    <h4>{{customer.name}}</h4>
+  </div>
+</a>
+</div>
+<customer-search></customer-search>
 <a *ngFor="let customer of customers"  [routerLink]="['/detail', customer.id]" class="col-1-4">
   <p>ID: {{customer.id}}</p>
   <p>Name: {{customer.name}}</p>

@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-var Objectable_1 = require("rxjs/Objectable");
+var Observable_1 = require("rxjs/Observable");
 var Subject_1 = require("rxjs/Subject");
 require("rxjs/add/observable/of");
 require("rxjs/add/operator/catch");
@@ -32,10 +32,10 @@ var CustomerSearchComponent = (function () {
         this.customers = this.searchTerms
             .debounceTime(300)
             .distinctUntilChanged()
-            .switchMap(function (term) { return term ? _this.customerSearchService.search(term) : Objectable_1.Observable.of([]); })
+            .switchMap(function (term) { return term ? _this.customerSearchService.search(term) : Observable_1.Observable.of([]); })
             .catch(function (error) {
             console.log(error);
-            return Objectable_1.Observable.of([]);
+            return Observable_1.Observable.of([]);
         });
     };
     CustomerSearchComponent.prototype.gotoDetail = function (customer) {

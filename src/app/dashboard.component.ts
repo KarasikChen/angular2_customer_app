@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 
 import {Customer} from './customer';
 import {CustomerService} from './customer.service';
+import {CustomerSearchComponent} from './customer-search.component';
 
 @Component ({
   selector: 'dashboard',
