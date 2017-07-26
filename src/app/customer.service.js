@@ -25,7 +25,7 @@ var CustomerService = (function () {
             .catch(this.handleError);
     };
     CustomerService.prototype.handleError = function (error) {
-        console.error('An error occurred', error); // for demo purposes only
+        console.error('An error occurred', error);
         return Promise.reject(error.message || error);
     };
     CustomerService.prototype.getCustomer = function (id) {
@@ -48,6 +48,13 @@ var CustomerService = (function () {
             .post(this.customersUrl, JSON.stringify({ name: name }), { headers: this.headers })
             .toPromise()
             .then(function (res) { return res.json().data; })
+            .catch(this.handleError);
+    };
+    CustomerService.prototype.destroy = function (id) {
+        var url = this.customersUrl + "/" + id;
+        return this.http.delete(url, { headers: this.headers })
+            .toPromise()
+            .then(function () { return null; })
             .catch(this.handleError);
     };
     return CustomerService;

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Customer } from './customer';
 import {CustomerDetailComponent} from './customer-detail.component';
-import { CUSTOMERS } from './mock-customers';
 import {CustomerService} from './customer.service';
 import {OnInit} from '@angular/core';
 import {Router} from '@angular/router';
@@ -46,5 +45,14 @@ export class CustomersComponent implements OnInit {
         })
     }
 
-  
+    delete(customer: Customer): void {
+      this.customerService
+        .destroy(customer.id)
+        .then(()=>{
+          this.customers = this.customers.filter(el => el !== customer);
+          if (this.selectedCustomer === customer) {this.selectedCustomer = null;}
+        })
+        ;
+    }
+
     }

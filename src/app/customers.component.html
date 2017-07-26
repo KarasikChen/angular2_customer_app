@@ -5,6 +5,7 @@
         [class.selected]="customers === selectedCustomer"
         (click)="onSelect(customer)">
         <span class="badge">{{customer.id}}</span> {{customer.name}}
+        <button class="delete" (click)="delete(customer); $event.stopPropagation()">X</button>
       </li>
     </ul>
     <!-- <div *ngIf="selectedCustomer">
@@ -24,8 +25,8 @@
 </div>
 
 <div>
-  <label>Hero name:</label> <input #heroName />
-  <button (click)="add(heroName.value); heroName.value=''">
+  <label>Customer name:</label> <input #customerName />
+  <button (click)="add(customerName.value); customerName.value=''">
     Add
   </button>
 </div>

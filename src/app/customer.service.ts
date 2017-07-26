@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Customer } from './customer';
-import { CUSTOMERS } from './mock-customers';
 import { Http, Headers  } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
@@ -50,5 +49,13 @@ export class CustomerService {
             .catch(this.handleError);
     }
 
+    destroy(id:number): Promise<void> {
+      const url = `${this.customersUrl}/${id}`;
+      return this.http.delete(url, {headers: this.headers})
+        .toPromise()
+        .then(()=>null)
+        .catch(this.handleError)
+        ;
+    }
 
 }

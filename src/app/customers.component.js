@@ -43,6 +43,17 @@ var CustomersComponent = (function () {
             _this.selectedCustomer = null;
         });
     };
+    CustomersComponent.prototype.delete = function (customer) {
+        var _this = this;
+        this.customerService
+            .destroy(customer.id)
+            .then(function () {
+            _this.customers = _this.customers.filter(function (el) { return el !== customer; });
+            if (_this.selectedCustomer === customer) {
+                _this.selectedCustomer = null;
+            }
+        });
+    };
     return CustomersComponent;
 }());
 CustomersComponent = __decorate([
