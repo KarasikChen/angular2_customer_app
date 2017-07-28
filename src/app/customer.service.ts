@@ -6,7 +6,7 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class CustomerService {
-    private customersUrl = 'api/customers';
+    private customersUrl = 'http://localhost:4741/';
     private headers = new Headers({ 'Content-Type': 'application/json' });
 
     constructor(private http: Http) { }

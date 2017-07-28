@@ -15,7 +15,7 @@ require("rxjs/add/operator/toPromise");
 var CustomerService = (function () {
     function CustomerService(http) {
         this.http = http;
-        this.customersUrl = 'api/customers';
+        this.customersUrl = 'http://localhost:4741/';
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
     }
     CustomerService.prototype.getCustomers = function () {
@@ -25,7 +25,7 @@ var CustomerService = (function () {
             .catch(this.handleError);
     };
     CustomerService.prototype.handleError = function (error) {
-        console.error('An error occurred', error); // for demo purposes only
+        console.error('An error occurred', error);
         return Promise.reject(error.message || error);
     };
     CustomerService.prototype.getCustomer = function (id) {
